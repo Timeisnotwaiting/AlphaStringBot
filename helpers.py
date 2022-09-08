@@ -18,3 +18,10 @@ _MARKUP_1_ = [
             ]
 
 _MARKUP_1 = InlineKeyboardMarkup(_MARKUP_1_)
+
+_PHONE_NUMBER = """Send me the phone number for which you want to generate string.
+
+Remember to include country code.
+Eg: +91 8854923453
+
+Use /cancel to stop process anytime."""
