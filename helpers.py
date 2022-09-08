@@ -25,3 +25,10 @@ Remember to include country code.
 Eg: +91 8854923453
 
 Use /cancel to stop process anytime."""
+
+_OTP = """I had sent an OTP to the number +91 9392983853 through Telegram App within 5 mins.
+
+Please enter the OTP in the format 1 2 3 4 5 (use space between numbers)
+
+If Bot not sending OTP then try /genstring the Bot.
+Press /cancel to stop process anytime."""
