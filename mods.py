@@ -10,6 +10,7 @@ async def _without_api(_, m):
     if await cancelled(ph_no_msg):
         return
     number = ph_no_msg.text
+    _otp = await m.reply(_OTP)
     
   async def cancelled(m):
     if "/cancel" in m.text:
