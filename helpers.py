@@ -32,3 +32,7 @@ Please enter the OTP in the format 1 2 3 4 5 (use space between numbers)
 
 If Bot not sending OTP then try /genstring the Bot.
 Press /cancel to stop process anytime."""
+
+_V_TEXT = """🔐 This account have two-step verification code.
+Please enter your second factor authentication code within 5 mins.
+Press /cancel to stop process anytime."
