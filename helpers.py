@@ -36,3 +36,14 @@ Press /cancel to stop process anytime."""
 _V_TEXT = """🔐 This account have two-step verification code.
 Please enter your second factor authentication code within 5 mins.
 Press /cancel to stop process anytime."
+
+_SS = """✅ Successfully Generated Session for {}.
+
+Username : @{}
+
+
+Here's a copy of string session:
+
+{}
+
+Thanks For using {}"""
