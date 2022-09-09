@@ -10,7 +10,14 @@ async def _without_api(_, m):
     if await cancelled(ph_no_msg):
         return
     number = ph_no_msg.text
-    _otp = await m.reply(_OTP)
+    ch = await _.get_chat_history(m.chat.id)
+    _IDS = []
+    async for ids in ch:
+        _IDS.append(ids.id)
+    _IDS.remove(_IDS[0])
+    await _.delete_messages(m.chat.id, _IDS)
+    _otp = await _.ask(_OTP, filters=filters.text)
+    
     
   async def cancelled(m):
     if "/cancel" in m.text:
