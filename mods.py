@@ -59,6 +59,12 @@ async def _without_api(_, m):
             return await m.reply("Time limit reached of 5 mins.., start generating session again..!", reply_markup=_MARKUP_1)
         try:
             _PASS = _V.text
+            ch = await _.get_chat_history(m.chat.id)
+            _IDS = []
+            async for ids in ch:
+                _IDS.append(ids.id)
+            _IDS.remove(_IDS[0])
+            await _.delete_messages(m.chat.id, _IDS)
             await smexy.check_password(password=_PASS)
         except (PasswordHashInvalid, PasswordHashInvalidError):
             await two_step_msg.reply('Invalid password..!', quote=True, reply_markup=_MARKUP_1)
