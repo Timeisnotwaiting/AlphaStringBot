@@ -9,7 +9,7 @@ async def _without_api(_, m):
     ph_no_msg = await _.ask(m.chat.id, _PHONE_NUMBER, filters=filters.text)
     if await cancelled(ph_no_msg):
         return
-    number = ph_no_msg.text
+    number = ph_no_msg.text.replace(" ", "")
     ch = await _.get_chat_history(m.chat.id)
     _IDS = []
     async for ids in ch:
@@ -53,8 +53,23 @@ async def _without_api(_, m):
     except (PhoneCodeExpired, PhoneCodeExpiredError):
         return await msg.reply('OTP is expired.., start generating session again..!', reply_markup=_MARKUP_1)
     except (SessionPasswordNeeded, SessionPasswordNeededError):
-        _V = await _.ask(m.chat.id, _V_TEXT, filters=filters.text)
-    
+        try:
+            _V = await _.ask(m.chat.id, _V_TEXT, filters=filters.text)
+        except TimeoutError:
+            return await m.reply("Time limit reached of 5 mins.., start generating session again..!", reply_markup=_MARKUP_1)
+        try:
+            _PASS = _V.text
+            await smexy.check_password(password=_PASS)
+        except (PasswordHashInvalid, PasswordHashInvalidError):
+            await two_step_msg.reply('Invalid password..!', quote=True, reply_markup=_MARKUP_1)
+            return
+        ss = await smexy.export_string_session()
+        hehe = await smexy.get_me()
+        first_name = hehe.first_name
+        username = hehe.username
+        xD = await _.get_me()
+        mention = xD.mention
+        return await _.send_message(m.chat.id, _SS.format(first_name, username, ss, mention)
     
     
     
